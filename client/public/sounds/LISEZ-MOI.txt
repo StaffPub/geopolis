@@ -1,0 +1,20 @@
+EMPLACEMENT DU SON DE LA CÉLÉBRATION « GAIN EXCEPTIONNEL »
+=========================================================
+
+Déposez ICI votre extrait audio (durée exacte : 13 secondes) sous le nom :
+
+    bigwin.mp3
+
+Chemin complet dans le projet :  client/public/sounds/bigwin.mp3
+URL servie par le site        :  /sounds/bigwin.mp3
+
+- Format recommandé : MP3 (ou .ogg/.m4a en gardant le nom de base « bigwin »
+  uniquement si vous renommez aussi la constante SOUND_URL dans
+  client/src/components/JackpotOverlay.tsx).
+- Le fichier est copié tel quel dans le build (dossier public de Vite) :
+  aucun codage nécessaire, relancez simplement MAJ-REPO.bat après l'ajout.
+- Si le fichier est absent, l'animation de 15 secondes se joue SILENCIEUSEMENT
+  (aucune erreur, aucun bug) : le son est un bonus optionnel.
+- Le son démarre en même temps que l'animation (déclenchée quand un joueur
+  encaisse >= 10 Md € d'un coup via une action commerce) et dure vos 13 s ;
+  l'animation, elle, dure 15 s et ne peut pas être passée.

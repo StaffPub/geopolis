@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: geopolis
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: SIMULATION_ENABLED
+        value: "true"
+      - key: TICK_MS
+        value: "600000"
+      - key: LOG_LEVEL
+        value: info
+      # IMPORTANT : le disque Render est éphémère. Sans Upstash, le fallback
+      # fichier perd le monde à chaque redéploiement. Configurez Upstash pour
+      # la persistance réelle (voir README).

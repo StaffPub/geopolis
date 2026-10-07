@@ -1,0 +1,43 @@
+{
+  "name": "geopolis",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "GEOPOLIS — Simulateur géopolitique persistant multijoueur : 36 nations, économie vivante, diplomatie, IA de gouvernance.",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build": "npm run build -w shared && npm run build -w server && npm run build -w client",
+    "build:shared": "npm run build -w shared",
+    "build:server": "npm run build -w server",
+    "build:client": "npm run build -w client",
+    "start": "node server/dist/index.js",
+    "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w client\"",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w client",
+    "test": "vitest run --root .",
+    "test:watch": "vitest --root .",
+    "smoke": "npm run build -w server && node scripts/smoke.mjs",
+    "seed:reset": "node server/dist/scripts/reseed.js",
+    "check:visual": "node scripts/visual-check.mjs",
+    "check:visual:setup": "npm i -D playwright && npx playwright install chromium && npm run build && node scripts/visual-check.mjs",
+    "audit:ui": "node scripts/ui-audit.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript": "~5.5.4",
+    "typescript-eslint": "^8.2.0",
+    "vitest": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
